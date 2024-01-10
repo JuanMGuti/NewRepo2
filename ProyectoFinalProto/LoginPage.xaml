@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ProyectoFinalProto.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="LoginPage">
+    
+   
+    
+    <StackLayout Margin="50" HorizontalOptions="Fill">
+
+        <StackLayout Padding="10">
+
+
+            <Entry
+                Text="{Binding UserName}"
+                Placeholder="UserName"
+                PlaceholderColor="#000"
+                TextColor="#000" />
+
+            <Entry
+                Text="{Binding Password}"
+                Placeholder="Password"
+                PlaceholderColor="#000"
+                TextColor="#000" />
+
+            <Button
+                Text="SING IN"
+                Command="{Binding LoginCommand}"/>
+
+        </StackLayout>
+
+
+    </StackLayout>
+</ContentPage>

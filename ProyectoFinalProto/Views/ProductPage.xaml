@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ProyectoFinalProto.Views.ProductPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ProyectoFinalProto.ViewModels"
+    xmlns:models="clr-namespace:ProyectoFinalProto.Models"
+    Title="Product Page">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding OnAddProductCommand}" Text="Add" />
+    </ContentPage.ToolbarItems>
+
+    <StackLayout>
+
+        <RefreshView
+            x:DataType="local:ProductPageViewModel"
+            Command="{Binding LoadProductCommand}"
+            IsRefreshing="{Binding IsBusy}">
+
+            <CollectionView ItemsSource="{Binding productList}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:ProductInfo">
+                        <StackLayout Padding="2">
+                            <SwipeView>
+                                <SwipeView.RightItems>
+                                    <SwipeItems>
+                                        <SwipeItem Text="Delete" Command="{Binding Source={RelativeSource AncestorType={x:Type local:ProductPageViewModel}},Path=ProductTappedDeleteCommand}" CommandParameter="{Binding .}" BackgroundColor="Red"/>
+                                        <SwipeItem IsDestructive="True" Text="Close" BackgroundColor="Green"/>
+                                    </SwipeItems>
+                                </SwipeView.RightItems>
+                                <Grid Padding="10">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="140" />
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="80" />
+                                        <ColumnDefinition Width="70" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Column="0" FontAttributes="Bold" FontSize="Large" Text="{Binding ProductName}"/>
+                                    <Label Grid.Column="1" Text="{Binding ProductDescription}" FontSize="Large"/>
+                                    <Label Grid.Column="2" Text="{Binding ProductQty}" FontSize="Large"/>
+                                    <Label Grid.Column="3" Text="{Binding ProductPrice}" FontSize="Large"/>
+
+                                </Grid>
+                            </SwipeView>   
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </RefreshView>
+
+        
+
+    </StackLayout>
+
+</ContentPage>

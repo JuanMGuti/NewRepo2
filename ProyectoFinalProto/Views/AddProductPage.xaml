@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ProyectoFinalProto.Views.AddProductPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ProyectoFinalProto.ViewModels"
+    Title="Product Entry"
+    BackgroundColor="White">
+
+    <StackLayout
+        Margin="10"
+        Padding="15"
+        Spacing="5">
+        <VerticalStackLayout IsVisible="False">
+            <Label
+                FontSize="Medium"
+                IsEnabled="False"
+                Text="ID" />
+            <Entry
+                FontSize="Medium"
+                IsEnabled="False"
+                Text="{Binding ProductInfo.ProductId, Mode=TwoWay}" />
+            <BoxView HeightRequest="0.5" Color="Gray" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label FontSize="Medium" Text="Product Name" />
+            <Entry FontSize="Medium" Text="{Binding ProductInfo.ProductName, Mode=TwoWay}" />
+            <BoxView HeightRequest="0.5" Color="Gray" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label FontSize="Medium" Text="Product Description" />
+            <Entry FontSize="Medium" Text="{Binding ProductInfo.ProductDescription, Mode=TwoWay}" />
+            <BoxView HeightRequest="0.5" Color="Gray" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label FontSize="Medium" Text="Product Qty" />
+            <Entry FontSize="Medium" Text="{Binding ProductInfo.ProductQty, Mode=TwoWay}" />
+            <BoxView HeightRequest="0.5" Color="Gray" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label FontSize="Medium" Text="Product Price" />
+            <Entry FontSize="Medium" Text="{Binding ProductInfo.ProductPrice, Mode=TwoWay}" />
+            <BoxView HeightRequest="0.5" Color="Gray" />
+        </VerticalStackLayout>
+
+        <StackLayout Orientation="Horizontal">
+            <Button
+                Command="{Binding SaveProductCommand}"
+                HorizontalOptions="FillAndExpand"
+                Text="Save" />
+            <Button
+                BackgroundColor="Red"
+                Command="{Binding OnCancelProductCommand}"
+                HorizontalOptions="FillAndExpand"
+                Text="Cancel" />
+
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
